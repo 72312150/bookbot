@@ -2,7 +2,14 @@ def main():
   path = "books/frankenstein.txt"
   text = get_book_text(path)
   letters = letter_count(text)
-  print(f"{letters}")
+  list_of_counts = list(letters.items())
+  list_of_counts.sort(key = lambda x: x[1], reverse=True)
+
+  print(f"{word_count(text)} words found in the document")
+
+  for count in list_of_counts:
+    if count[0].isalpha():
+      print(f"The '{count[0]}' was found {count[1]} times")
 
 def get_book_text(path):
   with open(path) as f:
